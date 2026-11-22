@@ -1,150 +1,552 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
+/* =========================================================
+   page.module.css — Página inicial pública do Meu Crochê
+   ========================================================= */
 
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
+/* --- Layout geral da página --- */
+.pagina {
   display: flex;
-  flex: 1;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   BANNER PRINCIPAL — fotografia de ateliê vintage
+   ========================================================= */
+
+.banner {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  overflow: hidden;
 }
 
-.main {
+/* Contêiner da imagem de fundo (ocupa 100% do banner) */
+.bannerImagem {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Camada escura sobre a foto para garantir leitura dos textos */
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(150, 66, 39, 0.58);
+
+}
+
+/* Conteúdo textual sobre a foto */
+.bannerConteudo {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+  padding: 8rem 2rem 6rem;
+  text-align: center;
   display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  gap: 1.5rem;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+/* Linha decorativa inferior do banner */
+.bannerDecorLinha {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(169, 79, 36, 0.5),
+    transparent
+  );
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+/* Pré-título */
+.bannerPreTitulo {
+  font-family: var(--fonte-texto);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cor-creme);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+.bannerPreTitulo::before,
+.bannerPreTitulo::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--cor-creme);
+  opacity: 0.6;
+}
+
+/* Título principal */
+.bannerTitulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.4rem, 5.5vw, 4.25rem);
+  font-weight: 700;
+  color: var(--cor-creme);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Descrição */
+.bannerDescricao {
+  font-family: var(--fonte-texto);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 300;
+  color: var(--cor-rosa-antigo);
+  max-width: 520px;
+  line-height: 1.75;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Grupo de botões */
+.bannerBotoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+/* Botão primário (creme) */
+.botaoPrimario {
+  font-family: var(--fonte-texto);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-marrom);
+  background-color: var(--cor-creme);
+  padding: 1rem 2.25rem;
+  border-radius: 2px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.botaoPrimario:hover {
+  background-color: var(--cor-rosa-antigo);
+  transform: translateY(-2px);
+}
+
+/* Botão secundário (contorno) */
+.botaoSecundario {
+  font-family: var(--fonte-texto);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-creme);
+  background-color: transparent;
+  padding: 1rem 2.25rem;
+  border-radius: 2px;
+  border: 1px solid rgba(245, 242, 237, 0.45);
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.botaoSecundario:hover {
+  border-color: var(--cor-creme);
+  background-color: rgba(245, 242, 237, 0.08);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   UTILITÁRIOS COMPARTILHADOS
+   ========================================================= */
+
+.containerCentrado {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sectionTag {
+  font-family: var(--fonte-texto);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-terracota);
+}
+
+.sectionTitulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--cor-marrom);
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.sectionTexto {
+  font-family: var(--fonte-texto);
+  font-size: 1.05rem;
+  color: #6b4a3a;
+  max-width: 600px;
+  line-height: 1.85;
+}
+
+/* =========================================================
+   SEÇÃO C — APRESENTAÇÃO
+   ========================================================= */
+
+.apresentacao {
+  background-color: var(--cor-creme);
+  padding: 7rem 2rem 5rem;
+  position: relative;
+}
+
+.apresentacao::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background-color: var(--cor-terracota);
+  margin: 0 auto 2.5rem;
+  opacity: 0.7;
+}
+
+/* =========================================================
+   DIVISÓRIA DECORATIVA
+   ========================================================= */
+
+.divisoria {
+  background-color: var(--cor-creme);
+  padding: 0 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.divisoria::before,
+.divisoria::after {
+  content: "";
+  flex: 1;
+  max-width: 200px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(169, 79, 36, 0.3));
+}
+
+.divisoria::after {
+  background: linear-gradient(to left, transparent, rgba(169, 79, 36, 0.3));
+}
+
+.divisoriaOrnamento {
+  font-size: 0.6rem;
+  color: var(--cor-terracota);
+  letter-spacing: 0.5em;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   SEÇÃO D — FUNCIONALIDADES (cartões mistos)
+   ========================================================= */
+
+.funcionalidades {
+  background-color: var(--cor-rosa-antigo);
+  padding: 6rem 2rem 7rem;
+}
+
+/* Grade de cartões */
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1120px;
+  margin: 2.5rem auto 0;
+  padding: 0 1rem;
+}
+
+/* Cartão base */
+.cartao {
+  background-color: var(--cor-branco);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(81, 44, 32, 0.07);
+  box-shadow: 0 2px 12px rgba(81, 44, 32, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cartao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(81, 44, 32, 0.13);
+}
+
+/* Área de foto (cartões com imagem) */
+.cartaoFoto {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Área de ícone SVG (cartões sem foto) */
+.cartaoIconeWrapper {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-creme);
+  border-bottom: 1px solid rgba(81, 44, 32, 0.06);
+  flex-shrink: 0;
+  color: var(--cor-marrom);
+}
+
+/* SVG dentro do ícone */
+.cartaoSvg {
+  width: 56px;
+  height: 56px;
+  opacity: 0.75;
+}
+
+/* Corpo de texto do cartão */
+.cartaoCorpo {
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  border-top: 2px solid var(--cor-terracota);
+}
+
+.cartaoTitulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cor-marrom);
+  line-height: 1.25;
+}
+
+.cartaoDescricao {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  color: #6b4a3a;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   SEÇÃO E — DESTAQUE
+   ========================================================= */
+
+.destaque {
+  background-color: var(--cor-vinho);
+  padding: 7rem 2rem;
+  position: relative;
+}
+
+.destaque::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(169, 79, 36, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.destaqueOrnamento {
+  font-size: 0.6rem;
+  letter-spacing: 0.6em;
+  color: var(--cor-terracota);
+  opacity: 0.65;
+}
+
+.destaqueFrase {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cor-creme);
+  line-height: 1.55;
+  max-width: 680px;
+  text-align: center;
+  quotes: none;
+  position: relative;
+  z-index: 1;
+}
+
+.destaqueSubtexto {
+  font-family: var(--fonte-texto);
+  font-size: 0.925rem;
+  font-weight: 300;
+  color: var(--cor-rosa-antigo);
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   SEÇÃO F — CHAMADA PARA CADASTRO
+   ========================================================= */
+
+.chamadaCadastro {
+  background-color: var(--cor-marrom);
+  padding: 7rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.chamadaCadastro::before {
+  content: "✦";
+  position: absolute;
+  font-size: 20rem;
+  color: rgba(255, 255, 255, 0.025);
+  top: -60px;
+  right: -40px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sectionTagClaro {
+  font-family: var(--fonte-texto);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-terracota);
+}
+
+.chamadaTitulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  font-weight: 700;
+  color: var(--cor-creme);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.chamadaTexto {
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  color: var(--cor-rosa-antigo);
+  max-width: 520px;
+  line-height: 1.85;
+  opacity: 0.9;
+}
+
+.chamadaBotoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.botaoPrimarioEscuro {
+  font-family: var(--fonte-texto);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-marrom);
+  background-color: var(--cor-creme);
+  padding: 1rem 2.25rem;
+  border-radius: 2px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.botaoPrimarioEscuro:hover {
+  background-color: var(--cor-rosa-antigo);
+  transform: translateY(-2px);
+}
+
+.botaoSecundarioEscuro {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--cor-rosa-antigo);
+  padding: 1rem 1.5rem;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.botaoSecundarioEscuro:hover {
+  color: var(--cor-creme);
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+/* Tablet: 2 colunas nos cartões */
+@media (max-width: 1024px) {
+  .cartoes {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 720px;
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
 }
 
+/* Mobile: coluna única */
 @media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+  .bannerConteudo {
+    gap: 1.25rem;
+    padding: 7rem 1.5rem 5rem;
   }
 
-  .intro {
-    gap: 16px;
+  .bannerBotoes,
+  .chamadaBotoes {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 300px;
   }
 
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+  .botaoPrimario,
+  .botaoSecundario,
+  .botaoPrimarioEscuro {
+    text-align: center;
   }
 
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .cartoes {
+    grid-template-columns: 1fr;
+    padding: 0;
+    max-width: 420px;
   }
-}
 
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
+  .cartaoFoto,
+  .cartaoIconeWrapper {
+    height: 200px;
+  }
+
+  .apresentacao,
+  .funcionalidades,
+  .destaque,
+  .chamadaCadastro {
+    padding: 5rem 1.5rem;
+  }
+
+  .divisoria {
+    padding: 0 1.5rem 3.5rem;
+  }
+
+  .containerCentrado {
+    padding: 0 1.25rem;
+  }
 }

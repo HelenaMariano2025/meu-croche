@@ -1,0 +1,53 @@
+/* =========================================================
+   Rodape.module.css
+   ========================================================= */
+
+.rodape {
+  background-color: var(--cor-marrom);
+  color: var(--cor-rosa-antigo);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icone {
+  color: var(--cor-terracota);
+  font-size: 1rem;
+}
+
+.nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-creme);
+  letter-spacing: 0.02em;
+}
+
+.descricao {
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+  color: var(--cor-rosa-antigo);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.copyright {
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  color: rgba(233, 221, 216, 0.5);
+  margin-top: 0.5rem;
+}

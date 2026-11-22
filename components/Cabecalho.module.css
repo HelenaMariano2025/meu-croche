@@ -1,0 +1,180 @@
+/* =========================================================
+   Cabecalho.module.css
+   ========================================================= */
+
+.cabecalho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(81, 44, 32, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* --- Logotipo --- */
+.logotipo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cor-creme);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logotipoIcone {
+  color: var(--cor-terracota);
+  font-size: 1rem;
+}
+
+/* --- Navegação --- */
+.navegacao {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.linkNav {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--cor-rosa-antigo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.linkNav:hover {
+  color: var(--cor-creme);
+}
+
+/* --- Botões de acesso --- */
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.botaoEntrar {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--cor-rosa-antigo);
+  padding: 0.4rem 1rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.botaoEntrar:hover {
+  color: var(--cor-creme);
+}
+
+.botaoCadastro {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cor-marrom);
+  background-color: var(--cor-creme);
+  padding: 0.5rem 1.25rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botaoCadastro:hover {
+  background-color: var(--cor-rosa-antigo);
+}
+
+/* --- Menu mobile --- */
+.menuCheckbox {
+  display: none;
+}
+
+.menuIcone {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 4px;
+}
+
+.menuIcone span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--cor-creme);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menuMobile {
+  display: none;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+  .navegacao,
+  .acoes {
+    display: none;
+  }
+
+  .menuIcone {
+    display: flex;
+  }
+
+  .menuCheckbox:checked ~ .menuMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: rgba(81, 44, 32, 0.98);
+    padding: 1.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .menuCheckbox:checked + .menuIcone span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menuCheckbox:checked + .menuIcone span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuCheckbox:checked + .menuIcone span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .botaoCadastroMobile {
+    font-family: var(--fonte-texto);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--cor-marrom);
+    background-color: var(--cor-creme);
+    padding: 0.75rem 1.25rem;
+    border-radius: 2px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+}

@@ -1,0 +1,194 @@
+/* =========================================================
+   CabecalhoPainel.module.css
+   Cabeçalho da área privada — Meu Crochê
+   ========================================================= */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--cor-marrom);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* --- Logotipo --- */
+.logotipo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-creme);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logotipoIcone {
+  color: var(--cor-terracota);
+  font-size: 0.85rem;
+}
+
+/* --- Navegação --- */
+.navegacao {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.linkNav {
+  font-family: var(--fonte-texto);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: rgba(233, 221, 216, 0.75);
+  letter-spacing: 0.04em;
+  padding: 0.4rem 0.75rem;
+  border-radius: 3px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.linkNav:hover {
+  color: var(--cor-creme);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* --- Área de perfil e ações --- */
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: 1.5rem;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--cor-rosa-antigo);
+  cursor: default;
+}
+
+.perfilIcone {
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+}
+
+.perfilNome {
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  color: rgba(233, 221, 216, 0.7);
+  white-space: nowrap;
+}
+
+.botaoSair {
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(233, 221, 216, 0.55);
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(233, 221, 216, 0.15);
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.botaoSair:hover {
+  color: var(--cor-rosa-antigo);
+  border-color: rgba(233, 221, 216, 0.3);
+}
+
+/* --- Menu mobile --- */
+.menuCheckbox {
+  display: none;
+}
+
+.menuIcone {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 4px;
+}
+
+.menuIcone span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--cor-creme);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menuMobile {
+  display: none;
+}
+
+.menuMobileDivisor {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin: 0.25rem 0;
+}
+
+.botaoSairMobile {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  color: rgba(233, 221, 216, 0.6);
+  padding: 0.4rem 0;
+  letter-spacing: 0.04em;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 900px) {
+  .navegacao,
+  .acoes {
+    display: none;
+  }
+
+  .menuIcone {
+    display: flex;
+  }
+
+  .menuCheckbox:checked ~ .menuMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background-color: var(--cor-marrom);
+    padding: 1.25rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .menuCheckbox:checked + .menuIcone span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menuCheckbox:checked + .menuIcone span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuCheckbox:checked + .menuIcone span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
