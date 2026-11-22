@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import CabecalhoPainel from "@/components/CabecalhoPainel";
 import styles from "./page.module.css";
@@ -97,7 +99,16 @@ const atalhos = [
 /* =========================================================
    Página /inicio — Painel principal do usuário
    ========================================================= */
-export default function PaginaInicio() {
+export default async function PaginaInicio() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/login");
+  }
   return (
     <div className={styles.pagina}>
       <CabecalhoPainel />

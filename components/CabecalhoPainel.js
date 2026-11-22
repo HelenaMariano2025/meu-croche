@@ -1,3 +1,4 @@
+import { sairDaConta } from "@/app/actions/authActions";
 import Link from "next/link";
 import styles from "./CabecalhoPainel.module.css";
 
@@ -52,9 +53,11 @@ export default function CabecalhoPainel() {
           </div>
 
           {/* Botão Sair (visual — sem funcionalidade de autenticação ainda) */}
-          <Link href="/" className={styles.botaoSair}>
-            Sair
-          </Link>
+          <form action={sairDaConta}>
+            <button type="submit" className={styles.botaoSair}>
+              Sair
+            </button>
+          </form>
         </div>
 
         {/* Menu mobile */}
@@ -76,7 +79,11 @@ export default function CabecalhoPainel() {
           <Link href="/inicio/calculadoras" className={styles.linkNav}>Calculadoras</Link>
           <Link href="/inicio/biblioteca" className={styles.linkNav}>Biblioteca</Link>
           <div className={styles.menuMobileDivisor} />
-          <Link href="/" className={styles.botaoSairMobile}>Sair</Link>
+          <form action={sairDaConta}>
+            <button type="submit" className={styles.botaoSairMobile}>
+              Sair
+            </button>
+          </form>
         </div>
       </div>
     </header>

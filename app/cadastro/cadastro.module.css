@@ -1,0 +1,166 @@
+
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 72px;
+}
+
+.conteudo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+.cartao {
+  width: 100%;
+  max-width: 480px;
+  padding: 3rem;
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-rosa-antigo);
+  box-shadow: 0 8px 30px rgba(81, 44, 32, 0.07);
+}
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.subtitulo {
+  color: var(--cor-terracota);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.titulo {
+  color: var(--cor-marrom);
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.descricao {
+  color: #786b63;
+  font-size: 0.9rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo label {
+  color: var(--cor-marrom);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.campo input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #d8cec7;
+  border-radius: 3px;
+  background-color: #fffdfb;
+  color: var(--cor-marrom);
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input::placeholder {
+  color: #a69a92;
+}
+
+.campo input:focus {
+  border-color: var(--cor-vinho);
+  box-shadow: 0 0 0 3px rgba(113, 59, 61, 0.1);
+}
+
+.mensagemSucesso,
+.mensagemErro {
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.mensagemSucesso {
+  color: #365b3c;
+  background-color: #edf5ed;
+  border: 1px solid #c9ddc9;
+}
+
+.mensagemErro {
+  color: #8b3030;
+  background-color: #f9eeee;
+  border: 1px solid #e8caca;
+}
+
+.botao {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  margin-top: 0.25rem;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--cor-vinho);
+  color: var(--cor-branco);
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.botao:hover {
+  background-color: var(--cor-vinho-escuro);
+}
+
+.botao:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.rodapeFormulario {
+  margin-top: 1.75rem;
+  text-align: center;
+  color: #786b63;
+  font-size: 0.875rem;
+}
+
+.link {
+  color: var(--cor-vinho);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:hover {
+  color: var(--cor-terracota);
+}
+
+@media (max-width: 480px) {
+  .conteudo {
+    padding: 2.5rem 1rem;
+  }
+
+  .cartao {
+    padding: 2rem 1.5rem;
+  }
+
+  .titulo {
+    font-size: 1.8rem;
+  }
+}
